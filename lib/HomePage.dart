@@ -48,7 +48,7 @@ Future<void> getNextEvent() async {
             child: Column(
               children: [
                 Image.network(
-                  'https://www.setambrett.net/images/special-background.jpg',
+                  'https://setambrett.net/images/special-background.jpg',
                   fit: BoxFit.fill,
                 ),
                 ListTile(
