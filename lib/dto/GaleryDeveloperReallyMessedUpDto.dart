@@ -1,21 +1,22 @@
 import 'package:html/parser.dart';
 
 import 'EventDto.dart';
+import 'GaleryDto.dart';
 
-class DeveloperReallyMessedUpDto {
+class GaleryDeveloperReallyMessedUpDto {
   final String title;
   final String html;
 
-  DeveloperReallyMessedUpDto({this.title, this.html});
+  GaleryDeveloperReallyMessedUpDto({this.title, this.html});
 
-  factory DeveloperReallyMessedUpDto.fromJson(Map<String, dynamic> json) {
-    return DeveloperReallyMessedUpDto(
+  factory GaleryDeveloperReallyMessedUpDto.fromJson(Map<String, dynamic> json) {
+    return GaleryDeveloperReallyMessedUpDto(
       title: json['title'] as String,
       html: json['html'] as String,
     );
   }
 
-  List<EventDto> extractEvents() {
+  List<GaleryDto> extractEvents() {
     var document = parse(this.html);
 
     var titles = document
@@ -33,10 +34,10 @@ class DeveloperReallyMessedUpDto {
         .map((e) => e.innerHtml)
         .toList();
 
-    List<EventDto> events = List();
+    List<GaleryDto> events = List();
 
     for (var i = 0; i < titles.length; i++) {
-      events.add(EventDto(title: titles[i], img: images[i], info: info[i]));
+      events.add(GaleryDto(title: titles[i], img: images[i], info: info[i]));
     }
 
     return events;
